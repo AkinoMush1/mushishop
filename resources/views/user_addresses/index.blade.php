@@ -28,8 +28,18 @@
                                 <td>{{ $address->zip }}</td>
                                 <td>{{ $address->contact_phone }}</td>
                                 <td>
-                                    <button class="btn btn-primary">修改</button>
-                                    <button class="btn btn-danger">删除</button>
+                                    <a class="btn btn-primary"
+                                       href="{{route('user_addresses.edit', ['user_address'=> $address->id])}}">修改</a>
+                                    <button class="btn btn-danger"
+                                            onclick="ondelete()">
+                                        删除
+                                    </button>
+                                    <form id="user-addresses-destroy"
+                                          action="{{route('user_addresses.destroy', ['user_address'=> $address->id])}}"
+                                          method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -39,4 +49,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scriptsAfterJs')
+    <script type="text/javascript">
+        function ondelete() {
+            var r = confirm("你确定要删除嘛？")
+            event.preventDefault();
+            if (r == true) {
+                document.getElementById('user-addresses-destroy').submit();
+            }
+        }
+    </script>
 @endsection
