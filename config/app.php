@@ -1,5 +1,7 @@
 <?php
 
+use Encore\Admin\AdminServiceProvider;
+
 return [
 
     /*
@@ -168,6 +170,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Encore\Admin\AdminServiceProvider::class,
 
 
         /*
