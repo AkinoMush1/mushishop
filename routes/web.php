@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('/', 'PagesController@root')->name('root');
+//Route::get('/', 'PagesController@root')->name('root');
+Route::redirect('/', '/products')->name('root');
 Auth::routes(['verify' => true]);
+
+Route::get('products', 'ProductsController@index')->name('products.index');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
 //    Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
