@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductSkuAttributesTable extends Migration
+class CreateUserFavoriteProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateProductSkuAttributesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_sku_attributes', function (Blueprint $table) {
+        Schema::create('user_favorite_products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('product_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateProductSkuAttributesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_sku_attributes');
+        Schema::dropIfExists('user_favorite_products');
     }
 }
