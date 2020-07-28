@@ -3,7 +3,7 @@
 use Encore\Admin\AdminServiceProvider;
 
 return [
-
+    'order_ttl' => 30,
     /*
     |--------------------------------------------------------------------------
     | Application Name
