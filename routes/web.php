@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('test', function () {
+    return view('test');
+});
+
 Route::redirect('/', '/products')->name('root');
 Auth::routes(['verify' => true]);
 
@@ -36,17 +40,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('orders', 'OrdersController@store')->name('orders.store');
     Route::get('orders', 'OrdersController@index')->name('orders.index');
     Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
-});
 
-// 支付宝
-Route::get('alipay', function () {
-    $alipay = app('alipay')->web([
-        'out_trade_no' => time(),
-        'total_amount' => '1',
-        'subject' => 'test subject - 测试',
-    ]);
-
-    return $alipay;
+    // 支付宝
+    Route::get('payment/{order}/alipay', 'PaymentController@payByAlipay')->name('payment.alipay');
 });
 
 // 商品详细

@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
             } else {
                 $config['log']['level'] = Logger::WARNING;
             }
-            // 调用 Yansongda\Pay 来创建一个支付宝支付对象
+            // 调用 Yansongda\pay 来创建一个支付宝支付对象
             return Pay::alipay($config);
         });
 
@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
             } else {
                 $config['log']['level'] = Logger::WARNING;
             }
-            // 调用 Yansongda\Pay 来创建一个微信支付对象
+            // 调用 Yansongda\pay 来创建一个微信支付对象
             return Pay::wechat($config);
         });
     }
