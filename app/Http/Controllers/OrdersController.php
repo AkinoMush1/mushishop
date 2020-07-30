@@ -114,7 +114,7 @@ class OrdersController extends Controller
         }
 
         if ($order->refund_status !== Order::REFUND_STATUS_PENDING) {
-            throw new InvalidRequestException('该订单已经申请过退    款，请勿重复申请');
+            throw new InvalidRequestException('该订单已经申请过退款，请勿重复申请');
         }
 
         // 将用户输入的退款理由放到订单的 extra 字段中
