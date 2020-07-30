@@ -18,7 +18,7 @@
                                 <div class="review_count">累计评价 <span class="count">{{ $product->review_count }}</span>
                                 </div>
                                 <div class="rating" title="评分 {{ $product->rating }}">评分 <span
-                                            class="count">{{ str_repeat('★', floor($product->rating)) }}{{ str_repeat('☆', 5 - floor($product->rating)) }}</span>
+                                        class="count">{{ str_repeat('★', floor($product->rating)) }}{{ str_repeat('☆', 5 - floor($product->rating)) }}</span>
                                 </div>
                             </div>
                             <div class="skus">
@@ -26,12 +26,12 @@
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     @foreach($product->skus as $sku)
                                         <label
-                                                class="btn sku-btn"
-                                                data-price="{{ $sku->price }}"
-                                                data-stock="{{ $sku->stock }}"
-                                                data-toggle="tooltip"
-                                                title="{{ $sku->description }}"
-                                                data-placement="bottom">
+                                            class="btn sku-btn"
+                                            data-price="{{ $sku->price }}"
+                                            data-stock="{{ $sku->stock }}"
+                                            data-toggle="tooltip"
+                                            title="{{ $sku->description }}"
+                                            data-placement="bottom">
                                             <input type="radio" name="skus" autocomplete="off"
                                                    value="{{ $sku->id }}"> {{ $sku->title }}
                                         </label>
@@ -41,7 +41,7 @@
                             <div class="cart_amount"><label>数量</label><input type="text"
                                                                              class="form-control form-control-sm"
                                                                              value="1"><span>件</span><span
-                                        class="stock"></span></div>
+                                    class="stock"></span></div>
                             <div class="buttons">
                                 @if($favored)
                                     <button class="btn btn-danger btn-disfavor">取消收藏</button>
@@ -68,6 +68,28 @@
                                 {!! $product->description !!}
                             </div>
                             <div role="tabpanel" class="tab-pane" id="product-reviews-tab">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <td>用户</td>
+                                        <td>商品</td>
+                                        <td>评分</td>
+                                        <td>评价</td>
+                                        <td>时间</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($reviews as $review)
+                                        <tr>
+                                            <td>{{ $review->order->user->name }}</td>
+                                            <td>{{ $review->productSku->title }}</td>
+                                            <td>{{ str_repeat('★', $review->rating) }}{{ str_repeat('☆', 5 - $review->rating) }}</td>
+                                            <td>{{ $review->review }}</td>
+                                            <td>{{ $review->reviewed_at->format('Y-m-d H:i') }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

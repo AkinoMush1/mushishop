@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Throwable;
 
-class InvalidRequestEception extends Exception
+class InvalidRequestException extends Exception
 {
     public function __construct($message = "", $code = 400)
     {
