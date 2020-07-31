@@ -17,6 +17,7 @@ Route::group([
     $router->get('orders/{order}', 'OrdersController@show')->name('admin.orders.show');
     $router->post('orders/{order}/ship', 'OrdersController@ship')->name('admin.orders.ship');
     $router->post('orders/{order}/refund', 'OrdersController@handleRefund')->name('admin.orders.handle_refund');
+    $router->get('coupon_codes', 'CouponCodesController@index');
 //    $router->get('products', 'ProductsController@index');
 //    $router->get('products/create', 'ProductsController@create');
 //    $router->post('products', 'ProductsController@store');
