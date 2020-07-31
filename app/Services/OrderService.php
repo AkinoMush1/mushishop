@@ -19,7 +19,7 @@ class OrderService
     {
         if ($coupon) {
             // 但此时我们还没有计算出订单总金额，因此先不校验
-            $coupon->checkAvailable();
+            $coupon->checkAvailable($user);
         }
         $order = DB::transaction(function () use ($user, $address, $remark, $items, $coupon) {
             $address->update(['last_used_at' => Carbon::now()]);
@@ -57,7 +57,7 @@ class OrderService
 
 // 更新订单总金额
             if ($coupon) {
-                $coupon->checkAvailable($totalAmount);
+                $coupon->checkAvailable($user, $totalAmount);
                 $totalAmount = $coupon->getAdjustedPrice($totalAmount);
                 $order->couponCode()->associate($coupon);
                 if ($coupon->changeUsed() <= 0) {
