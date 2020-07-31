@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Exceptions\CouponCodeUnavailableException;
 use App\Jobs\CloseOrder;
+use App\Models\CouponCode;
 use App\Models\Order;
 use App\Models\ProductSku;
 use App\Models\User;
@@ -13,9 +15,13 @@ use Illuminate\Support\Facades\DB;
 
 class OrderService
 {
-    public function store(User $user, UserAddress $address, $remark, $items)
+    public function store(User $user, UserAddress $address, $remark, $items, CouponCode $coupon = null)
     {
-        $order = DB::transaction(function () use ($user, $address, $remark, $items) {
+        if ($coupon) {
+            // 但此时我们还没有计算出订单总金额，因此先不校验
+            $coupon->checkAvailable();
+        }
+        $order = DB::transaction(function () use ($user, $address, $remark, $items, $coupon) {
             $address->update(['last_used_at' => Carbon::now()]);
 
             $order = new Order([
@@ -50,6 +56,14 @@ class OrderService
             }
 
 // 更新订单总金额
+            if ($coupon) {
+                $coupon->checkAvailable($totalAmount);
+                $totalAmount = $coupon->getAdjustedPrice($totalAmount);
+                $order->couponCode()->associate($coupon);
+                if ($coupon->changeUsed() <= 0) {
+                    throw new CouponCodeUnavailableException('该优惠券已被兑完');
+                }
+            }
             $order->update(['total_amount' => $totalAmount]);
 
 // 将下单的商品从购物车中移除
