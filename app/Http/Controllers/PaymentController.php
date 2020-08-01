@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderPaid;
 use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class PaymentController extends Controller
         $alipay = app('alipay')->web([
             'out_trade_no' => $order->no, // 订单编号，需保证在商户端不重复
             'total_amount' => $order->total_amount, // 订单金额，单位元，支持小数点后两位
-            'subject' => '支付 Laravel Shop 的订单：' . $order->no, // 订单标题
+            'subject'      => '支付 Laravel Shop 的订单：' . $order->no, // 订单标题
         ]);
 
         return view('pay.alipay', ['content' => $alipay->getContent()]);
@@ -62,11 +63,18 @@ class PaymentController extends Controller
         }
 
         $order->update([
-            'paid_at' => Carbon::now(), // 支付时间
+            'paid_at'        => Carbon::now(), // 支付时间
             'payment_method' => 'alipay', // 支付方式
-            'payment_no' => $data->trade_no, // 支付宝订单号
+            'payment_no'     => $data->trade_no, // 支付宝订单号
         ]);
 
+        $this->afterPaid($order);
+
         return app('alipay')->success();
+    }
+
+    protected function afterPaid(Order $order)
+    {
+        event(new OrderPaid($order));
     }
 }

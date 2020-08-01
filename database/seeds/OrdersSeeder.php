@@ -41,9 +41,9 @@ class OrdersSeeder extends Seeder
         }
 
 
-        $products->unique('id')->each(function (Product $product) {
+        $products->unique('id')->each(function (\App\Models\Product $product) {
             // 查出该商品的销量、评分、评价数
-            $result = OrderItem::query()
+            $result = \App\Models\OrderItem::query()
                 ->where('product_id', $product->id)
                 ->whereHas('order', function ($query) {
                     $query->whereNotNull('paid_at');

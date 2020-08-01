@@ -12,7 +12,7 @@ $factory->define(OrderItem::class, function (Faker $faker) {
     return [
         'product_id'     => $product->id,
         'product_sku_id' => $sku->id,
-        'admount'        => random_int(1, 5),
+        'amount'         => random_int(1, 5),
         'price'          => $sku->price,
         'rating'         => null,
         'review'         => null,
