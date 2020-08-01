@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="69f2e3fd-5512-4211-bd12-b69cc5b1819a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CouponCodesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CouponCodesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CouponCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CouponCode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/OrderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/CloseOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CloseOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/OrderFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/OrderFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/OrderItemFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/OrderItemFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +184,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Subversion.Network" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -219,6 +220,10 @@
       <command value="artisan tinker" />
       <command value="artisan config:clear" />
       <command value="artisan route:list" />
+      <command value="artisan make:seeder" />
+      <command value="artisan make:factory --model=UserAddress UserAddressFactory" />
+      <command value="artisan make:factory --model=CouponCode CouponCodeFactory" />
+      <command value="artisan make:factory --model=Order OrderFactory" />
     </option>
   </component>
   <component name="RunManager">
@@ -256,7 +261,8 @@
       <workItem from="1595998591724" duration="18692000" />
       <workItem from="1596018608469" duration="8544000" />
       <workItem from="1596077520641" duration="3767000" />
-      <workItem from="1596173163781" duration="14368000" />
+      <workItem from="1596173163781" duration="16017000" />
+      <workItem from="1596246190957" duration="5372000" />
     </task>
     <servers />
   </component>
@@ -280,22 +286,22 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="92" y="92" width="1496" height="826" key="DiffContextDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1596017766952" />
-    <state width="1637" height="450" key="GridCell.Tab.0.bottom" timestamp="1596019618762">
+    <state width="1637" height="246" key="GridCell.Tab.0.bottom" timestamp="1596248220397">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="450" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1596019618762" />
-    <state width="1637" height="450" key="GridCell.Tab.0.center" timestamp="1596019618762">
+    <state width="1637" height="246" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1596248220397" />
+    <state width="1637" height="246" key="GridCell.Tab.0.center" timestamp="1596248220397">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="450" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1596019618762" />
-    <state width="1637" height="450" key="GridCell.Tab.0.left" timestamp="1596019618762">
+    <state width="1637" height="246" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1596248220397" />
+    <state width="1637" height="246" key="GridCell.Tab.0.left" timestamp="1596248220397">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="450" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1596019618762" />
-    <state width="1637" height="450" key="GridCell.Tab.0.right" timestamp="1596019618762">
+    <state width="1637" height="246" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1596248220397" />
+    <state width="1637" height="246" key="GridCell.Tab.0.right" timestamp="1596248220397">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="450" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1596019618762" />
+    <state width="1637" height="246" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1596248220397" />
     <state x="656" y="428" key="NewPhpFileDialog" timestamp="1596121710645">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -304,22 +310,22 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="254" height="198" key="RunAnythingAction_Filter_Popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596015210930" />
-    <state x="449" y="226" key="SettingsEditor" timestamp="1596019577211">
+    <state x="449" y="226" key="SettingsEditor" timestamp="1596249031906">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="449" y="226" key="SettingsEditor/0.0.1680.1010@0.0.1680.1010" timestamp="1596019577211" />
+    <state x="449" y="226" key="SettingsEditor/0.0.1680.1010@0.0.1680.1010" timestamp="1596249031906" />
     <state x="531" y="198" width="596" height="532" key="find.popup" timestamp="1596115164280">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="531" y="198" width="596" height="532" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596115164280" />
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1596019597176">
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1596246982867">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596019597176" />
-    <state x="647" y="639" width="672" height="678" key="search.everywhere.popup" timestamp="1596099659855">
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596246982867" />
+    <state x="647" y="639" width="672" height="678" key="search.everywhere.popup" timestamp="1596246780023">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="647" y="639" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596099659855" />
+    <state x="647" y="639" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596246780023" />
   </component>
   <component name="masterDetails">
     <states>
