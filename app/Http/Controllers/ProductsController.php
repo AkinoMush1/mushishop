@@ -7,8 +7,6 @@ use App\Models\Category;
 use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use mysql_xdevapi\Exception;
 
 class ProductsController extends Controller
 {
