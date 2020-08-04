@@ -28,7 +28,7 @@ class Category extends Model
                 $category->path = '-';
             } else {
                 $category->level = $category->parent->level + 1;
-                $category->path = $category->parent->path . $category->level . '-';
+                $category->path = $category->parent->path . $category->id . '-';
             }
         });
     }
@@ -40,7 +40,7 @@ class Category extends Model
 
     public function children()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class, 'parent_id');
     }
 
     public function products()
