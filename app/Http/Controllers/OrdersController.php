@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\OrderReviewed;
 use App\Exceptions\CouponCodeUnavailableException;
 use App\Exceptions\InvalidRequestException;
+use App\Exceptions\TestException;
 use App\Http\Requests\ApplyRefundRequest;
 use App\Http\Requests\OrderRequest;
 use App\Http\Requests\Request;
@@ -84,8 +85,8 @@ class OrdersController extends Controller
                 $orderItem = $order->items()->find($review['id']);
                 // 保存评分和评价
                 $orderItem->update([
-                    'rating' => $review['rating'],
-                    'review' => $review['review'],
+                    'rating'      => $review['rating'],
+                    'review'      => $review['review'],
                     'reviewed_at' => Carbon::now(),
                 ]);
             }
@@ -133,7 +134,7 @@ class OrdersController extends Controller
         // 将订单退款状态改为已申请退款
         $order->update([
             'refund_status' => Order::REFUND_STATUS_APPLIED,
-            'extra' => $extra,
+            'extra'         => $extra,
         ]);
 
         return $order;

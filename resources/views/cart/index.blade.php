@@ -108,127 +108,124 @@
 
 @section('scriptsAfterJs')
     <script>
-        $(document).ready(function () {
-            $('.btn-remove').click(function () {
-                var id = $(this).closest('tr').data('id');
-                swal({
-                    title: "确认要将该商品移除？",
-                    icon: "warning",
-                    buttons: ['取消', '确定'],
-                    dangerMode: true,
+        $('.btn-remove').click(function () {
+            var id = $(this).closest('tr').data('id');
+            swal({
+                title: "确认要将该商品移除？",
+                icon: "warning",
+                buttons: ['取消', '确定'],
+                dangerMode: true,
+            })
+                .then(function (willDelete) {
+                    if (!willDelete) {
+                        return;
+                    }
+                    axios.delete('/cart/' + id)
+                        .then(function () {
+                            location.reload();
+                        })
                 })
-                    .then(function (willDelete) {
-                        if (!willDelete) {
-                            return;
-                        }
-                        axios.delete('/cart/' + id)
-                            .then(function () {
-                                location.reload();
-                            })
-                    })
-            })
+        })
 
-            $('#select-all').change(function () {
-                // 获取单选框的选中状态
-                // prop() 方法可以知道标签中是否包含某个属性，当单选框被勾选时，对应的标签就会新增一个 checked 的属性
-                var checked = $(this).prop('checked');
-                // 获取所有 name=select 并且不带有 disabled 属性的勾选框
-                // 对于已经下架的商品我们不希望对应的勾选框会被选中，因此我们需要加上 :not([disabled]) 这个条件
-                $('input[name=select][type=checkbox]:not([disabled])').each(function () {
-                    // 将其勾选状态设为与目标单选框一致
-                    $(this).prop('checked', checked);
-                });
+        $('#select-all').change(function () {
+            // 获取单选框的选中状态
+            // prop() 方法可以知道标签中是否包含某个属性，当单选框被勾选时，对应的标签就会新增一个 checked 的属性
+            var checked = $(this).prop('checked');
+            // 获取所有 name=select 并且不带有 disabled 属性的勾选框
+            // 对于已经下架的商品我们不希望对应的勾选框会被选中，因此我们需要加上 :not([disabled]) 这个条件
+            $('input[name=select][type=checkbox]:not([disabled])').each(function () {
+                // 将其勾选状态设为与目标单选框一致
+                $(this).prop('checked', checked);
             });
+        });
 
-            // 提交订单
-            $('.btn-create-order').click(function () {
-                var req = {
-                    address_id: $('#order-form').find('select[name=address]').val(),
-                    items: [],
-                    remak: $('#order-form').find('textarea[name=remak]').val(),
-                    coupon_code: $('input[name=coupon_code]').val(), // 从优惠码输入框中获取优惠码
-                }
+        // 提交订单
+        $('.btn-create-order').click(function () {
+            var req = {
+                address_id: $('#order-form').find('select[name=address]').val(),
+                items: [],
+                remak: $('#order-form').find('textarea[name=remak]').val(),
+                coupon_code: $('input[name=coupon_code]').val(), // 从优惠码输入框中获取优惠码
+            }
 
-                $('table tr[data-id]').each(function () {
-                    var checkbox = $(this).find('input[name=select][type=checkbox]');
+            $('table tr[data-id]').each(function () {
+                var checkbox = $(this).find('input[name=select][type=checkbox]');
 
-                    if (checkbox.prop('disable') || !checkbox.prop('checked')) {
-                        return;
-                    }
-
-                    var input = $(this).find('input[name=amount]');
-                    if (input.val() == 0 || isNaN(input.val())) {
-                        return;
-                    }
-
-                    req.items.push({
-                        sku_id: $(this).data('id'),
-                        amount: input.val(),
-                    })
-                });
-
-                axios.post('{{ route('orders.store') }}', req)
-                    .then(function (response) {
-                        swal('订单提交成功', '', 'success');
-                        location.href = '/orders/' + response.data.id;
-                    }, function (error) {
-                        if (error.response.status === 422) {
-                            // http 状态码为 422 代表用户输入校验失败
-                            var html = '<div>';
-                            _.each(error.response.data.errors, function (errors) {
-                                _.each(errors, function (error) {
-                                    html += error + '<br>';
-                                })
-                            });
-                            html += '</div>';
-                            swal({content: $(html)[0], icon: 'error'})
-                        } else if (error.response.status === 403) { // 这里判断状态 403
-                            swal(error.response.data.msg, '', 'error');
-                        } else {
-                            // 其他情况应该是系统挂了
-                            swal('系统错误', '', 'error');
-                        }
-                    });
-            })
-
-            // 检查按钮点击事件
-            $('#btn-check-coupon').click(function () {
-
-                var code = $('input[name=coupon_code]').val();
-                if (!code) {
-                    swal('请输入优惠码', '', 'warning');
+                if (checkbox.prop('disable') || !checkbox.prop('checked')) {
                     return;
                 }
 
-                axios.get('/coupon_codes/' + encodeURIComponent(code))
-                    .then(function (response) {
-                        $('#coupon_desc').text(response.data.description);
-                        $('input[name=coupon_code]').prop('disabled', true);
-                        $('#btn-check-coupon').hide();
-                        $('#btn-cancel-coupon').show();
-                    })
-                    .catch(function (error) {
-                        // 如果返回码是 404，说明优惠券不存在
-                        if (error.response.status === 404) {
-                            swal('优惠码不存在', '', 'error');
-                        } else if (error.response.status === 403) {
-                            // 如果返回码是 403，说明有其他条件不满足
-                            swal(error.response.data.msg, '', 'error');
-                        } else {
-                            // 其他错误
-                            swal('系统内部错误', '', 'error');
-                        }
-                    })
-            })
+                var input = $(this).find('input[name=amount]');
+                if (input.val() == 0 || isNaN(input.val())) {
+                    return;
+                }
 
-            // 隐藏 按钮点击事件
-            $('#btn-cancel-coupon').click(function () {
-                $('#coupon_desc').text(''); // 隐藏优惠信息
-                $('input[name=coupon_code]').prop('disabled', false);  // 启用输入框
-                $('#btn-cancel-coupon').hide(); // 隐藏 取消 按钮
-                $('#btn-check-coupon').show(); // 显示 检查 按钮
+                req.items.push({
+                    sku_id: $(this).data('id'),
+                    amount: input.val(),
+                })
             });
+
+            axios.post('{{ route('orders.store') }}', req)
+                .then(function (response) {
+                    swal('订单提交成功', '', 'success');
+                    location.href = '/orders/' + response.data.id;
+                }, function (error) {
+                    if (error.response.status === 422) {
+                        // http 状态码为 422 代表用户输入校验失败
+                        var html = '<div>';
+                        _.each(error.response.data.errors, function (errors) {
+                            _.each(errors, function (error) {
+                                html += error + '<br>';
+                            })
+                        });
+                        html += '</div>';
+                        swal({content: $(html)[0], icon: 'error'})
+                    } else if (error.response.status === 403) { // 这里判断状态 403
+                        swal(error.response.data.msg, '', 'error');
+                    } else {
+                        // 其他情况应该是系统挂了
+                        swal('系统错误', '', 'error');
+                    }
+                });
         })
 
+        // 检查按钮点击事件
+        $('#btn-check-coupon').click(function () {
+
+            var code = $('input[name=coupon_code]').val();
+            if (!code) {
+                swal('请输入优惠码', '', 'warning');
+                return;
+            }
+
+            axios.get('/coupon_codes/' + encodeURIComponent(code))
+                .then(function (response) {
+                    $('#coupon_desc').text(response.data.description);
+                    $('input[name=coupon_code]').prop('disabled', true);
+                    $('#btn-check-coupon').hide();
+                    $('#btn-cancel-coupon').show();
+                })
+                .catch(function (error) {
+                    // 如果返回码是 404，说明优惠券不存在
+                    if (error.response.status === 404) {
+                        swal('优惠码不存在', '', 'error');
+                    } else if (error.response.status === 403) {
+                        // 如果返回码是 403，说明有其他条件不满足
+                        swal(error.response.data.msg, '', 'error');
+                    } else {
+                        // 其他错误
+                        swal('系统内部错误', '', 'error');
+                    }
+                })
+        })
+
+        // 隐藏 按钮点击事件
+        $('#btn-cancel-coupon').click(function () {
+            $('#coupon_desc').text(''); // 隐藏优惠信息
+            $('input[name=coupon_code]').prop('disabled', false);  // 启用输入框
+            $('#btn-cancel-coupon').hide(); // 隐藏 取消 按钮
+            $('#btn-check-coupon').show(); // 显示 检查 按钮
+        })
     </script>
 @endsection

@@ -35,11 +35,10 @@ class CartService
 
     public function remove($skuIds)
     {
+        // 可以传单个 ID，也可以传 ID 数组
         if (!is_array($skuIds)) {
             $skuIds = [$skuIds];
         }
-
-        Auth::user()->cartItems()->wherein('product_sku_id', $skuIds)->delete();
+        Auth::user()->cartItems()->whereIn('product_sku_id', $skuIds)->delete();
     }
-
 }

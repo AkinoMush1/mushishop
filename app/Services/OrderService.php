@@ -25,13 +25,13 @@ class OrderService
             $address->update(['last_used_at' => Carbon::now()]);
 
             $order = new Order([
-                'address' => [
-                    'address' => $address->full_address,
-                    'zip' => $address->zip,
-                    'contact_name' => $address->contact_name,
+                'address'      => [
+                    'address'       => $address->full_address,
+                    'zip'           => $address->zip,
+                    'contact_name'  => $address->contact_name,
                     'contact_phone' => $address->contact_phone,
                 ],
-                'remark' => $remark,
+                'remark'       => $remark,
                 'total_amount' => 0,
             ]);
             $order->user()->associate($user);
@@ -42,7 +42,7 @@ class OrderService
                 $sku = ProductSku::find($data['sku_id']);
                 $item = $order->items()->make([
                     'amount' => $data['amount'],
-                    'price' => $sku->price,
+                    'price'  => $sku->price,
                 ]);
 
                 $item->product()->associate($sku->product_id);
@@ -67,7 +67,7 @@ class OrderService
             $order->update(['total_amount' => $totalAmount]);
 
 // 将下单的商品从购物车中移除
-            $skuIds = collect($items)->pluck('sku_id');
+            $skuIds = collect($items)->pluck('sku_id')->all();
             app(CartService::class)->remove($skuIds);
 
             return $order;
