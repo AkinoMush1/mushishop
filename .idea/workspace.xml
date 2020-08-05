@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="69f2e3fd-5512-4211-bd12-b69cc5b1819a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_05_043808_create_crowdfunding_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_05_043808_create_crowdfunding_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/CrowdfundingProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/CrowdfundingProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/ProductsController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +274,7 @@
       <workItem from="1596246190957" duration="25272000" />
       <workItem from="1596337033754" duration="15014000" />
       <workItem from="1596518377403" duration="29148000" />
-      <workItem from="1596600928952" duration="5311000" />
+      <workItem from="1596600928952" duration="6094000" />
     </task>
     <servers />
   </component>
@@ -299,22 +298,22 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="92" y="92" width="1496" height="826" key="DiffContextDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1596017766952" />
-    <state width="1637" height="246" key="GridCell.Tab.0.bottom" timestamp="1596524233416">
+    <state width="1637" height="246" key="GridCell.Tab.0.bottom" timestamp="1596606650086">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1596524233416" />
-    <state width="1637" height="246" key="GridCell.Tab.0.center" timestamp="1596524233416">
+    <state width="1637" height="246" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1596606650086" />
+    <state width="1637" height="246" key="GridCell.Tab.0.center" timestamp="1596606650086">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1596524233416" />
-    <state width="1637" height="246" key="GridCell.Tab.0.left" timestamp="1596524233416">
+    <state width="1637" height="246" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1596606650086" />
+    <state width="1637" height="246" key="GridCell.Tab.0.left" timestamp="1596606650085">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1596524233416" />
-    <state width="1637" height="246" key="GridCell.Tab.0.right" timestamp="1596524233416">
+    <state width="1637" height="246" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1596606650085" />
+    <state width="1637" height="246" key="GridCell.Tab.0.right" timestamp="1596606650086">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1596524233416" />
+    <state width="1637" height="246" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1596606650086" />
     <state x="656" y="428" key="NewPhpFileDialog" timestamp="1596121710645">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
