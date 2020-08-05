@@ -18,7 +18,7 @@ class CategoryService
 
         return $allCategories
             ->where('parent_id', $parentId)
-            ->map(function ($category) {
+            ->each(function ($category) {
                 $data = ['id' => $category->id, 'name' => $category->name];
                 if (!$category->is_directory) {
                     return $data;
