@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="69f2e3fd-5512-4211-bd12-b69cc5b1819a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/CategoryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CategoryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_05_043808_create_crowdfunding_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_05_043808_create_crowdfunding_products_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,6 +233,7 @@
       <command value="php artisan make:migration products_add_category_id --table=products" />
       <command value="artisan make:migration products_add_category_id --table=products" />
       <command value="artisan make:seeder CategoriesSeeder" />
+      <command value="artisan db:seed --class = Category.php" />
     </option>
   </component>
   <component name="RunManager">
@@ -272,7 +275,7 @@
       <workItem from="1596246190957" duration="25272000" />
       <workItem from="1596337033754" duration="15014000" />
       <workItem from="1596518377403" duration="29148000" />
-      <workItem from="1596600928952" duration="2298000" />
+      <workItem from="1596600928952" duration="5311000" />
     </task>
     <servers />
   </component>
@@ -332,14 +335,14 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="531" y="198" width="596" height="532" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596531556138" />
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1596546907843">
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1596605618104">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596546907843" />
-    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1596542226726">
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596605618104" />
+    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1596605369509">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596542226726" />
+    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596605369509" />
   </component>
   <component name="masterDetails">
     <states>

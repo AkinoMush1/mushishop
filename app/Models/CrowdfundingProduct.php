@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Encore\Admin\Traits\DefaultDatetimeFormat;
 use Illuminate\Database\Eloquent\Model;
 
 class CrowdfundingProduct extends Model
 {
+    use DefaultDatetimeFormat;
+
     public $guarded = [];
 
     const STATUS_FUNDING = 'funding';
