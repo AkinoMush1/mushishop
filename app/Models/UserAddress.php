@@ -16,6 +16,9 @@ class UserAddress extends Model
         'contact_phone',
         'last_used_at',
     ];
+
+    protected $appends = ['full_address'];
+
     public $dates = [
         'last_used_at'
     ];
