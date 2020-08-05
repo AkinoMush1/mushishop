@@ -80,23 +80,29 @@ class OrdersController extends AdminController
             throw new InvalidRequestException('该订单未付款');
         }
 
+        // 众筹订单只有在众筹成功之后发货
+        if ($order->type === Order::TYPE_CROWDFUNDING &&
+            $order->items[0]->product->crowdfunding->status !== CrowdfundingProduct::STATUS_SUCCESS) {
+            throw new InvalidRequestException('众筹订单只能在众筹成功之后发货');
+        }
+
         if ($order->ship_status !== Order::SHIP_STATUS_PENDING) {
             throw new InvalidRequestException('该订单已发货');
         }
 
         $data = $request->validate([
             'express_company' => ['required'],
-            'express_no' => ['required'],
+            'express_no'      => ['required'],
         ], [], [
             'express_company' => '物流公司',
-            'express_no' => '物流单号',
+            'express_no'      => '物流单号',
         ]);
         // 将订单发货状态改为已发货，并存入物流信息
         $order->update([
             'ship_status' => Order::SHIP_STATUS_DELIVERED,
             // 我们在 Order 模型的 $casts 属性里指明了 ship_data 是一个数组
             // 因此这里可以直接把数组传过去
-            'ship_data' => $data,
+            'ship_data'   => $data,
         ]);
 
         // 返回上一页
@@ -124,7 +130,7 @@ class OrdersController extends AdminController
             // 将订单的退款状态改为未退款
             $order->update([
                 'refund_status' => Order::REFUND_STATUS_PENDING,
-                'extra' => $extra,
+                'extra'         => $extra,
             ]);
         }
 
@@ -141,8 +147,8 @@ class OrdersController extends AdminController
                 $refundNo = Order::getAvailableRefundNo();
 
                 $ret = app('alipay')->refund([
-                    'out_trade_no' => $order->no,
-                    'refund_amount' => $order->total_amount,
+                    'out_trade_no'   => $order->no,
+                    'refund_amount'  => $order->total_amount,
                     'out_request_no' => $refundNo,
                 ]);
 
@@ -153,14 +159,14 @@ class OrdersController extends AdminController
                     $extra['refund_failed_code'] = $ret->sub_code;
                     // 将订单的退款状态标记为退款失败
                     $order->update([
-                        'refund_no' => $refundNo,
+                        'refund_no'     => $refundNo,
                         'refund_status' => Order::REFUND_STATUS_FAILED,
-                        'extra' => $extra,
+                        'extra'         => $extra,
                     ]);
                 } else {
                     // 将订单的退款状态标记为退款成功并保存退款订单号
                     $order->update([
-                        'refund_no' => $refundNo,
+                        'refund_no'     => $refundNo,
                         'refund_status' => Order::REFUND_STATUS_SUCCESS,
                     ]);
                 }

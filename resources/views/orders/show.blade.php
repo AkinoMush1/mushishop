@@ -73,7 +73,7 @@
                                 </div>
                             @endif
 
-                            @if($order->paid_at && $order->refund_status !== \App\Models\Order::REFUND_STATUS_PENDING)
+                            @if($order->type !== \App\Models\Order::TYPE_CROWDFUNDING && $order->paid_at && $order->refund_status !== \App\Models\Order::REFUND_STATUS_PENDING)
                                 <div class="line">
                                     <div class="line-label">退款状态：</div>
                                     <div
