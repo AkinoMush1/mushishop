@@ -76,7 +76,7 @@ class OrderService
 
         });
 
-//        dispatch(new CloseOrder($order, config('app.order_ttl')));
+        dispatch(new CloseOrder($order, config('app.order_ttl')));
 
         return $order;
     }
@@ -115,6 +115,7 @@ class OrderService
             if ($sku->decreaseStock($amount) <= 0) {
                 throw new InvalidRequestException('该商品库存不足');
             }
+
 
             return $order;
         });

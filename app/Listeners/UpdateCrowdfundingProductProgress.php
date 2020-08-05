@@ -4,8 +4,8 @@ namespace App\Listeners;
 
 use App\Events\OrderPaid;
 use App\Models\Order;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\DB;
 
 class UpdateCrowdfundingProductProgress implements ShouldQueue
 {
@@ -29,9 +29,9 @@ class UpdateCrowdfundingProductProgress implements ShouldQueue
             })
             ->first([
                 // 取出订单总金额
-                \DB::raw('sum(total_amount) as total_amount'),
+                DB::raw('sum(total_amount) as total_amount'),
                 // 取出去重的支持用户数
-                \DB::raw('count(distinct(user_id)) as user_count'),
+                DB::raw('count(distinct(user_id)) as user_count'),
             ]);
 
         $crowdfunding->update([
