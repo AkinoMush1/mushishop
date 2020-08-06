@@ -120,7 +120,17 @@
                         </ul>
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="product-detail-tab">
-                                {!! $product->description !!}
+                                <div class="properties-list">
+                                    <div class="properties-list-title">产品参数：</div>
+                                    <ul class="properties-list-body">
+                                        @foreach($product->groupedProperties as $name => $values)
+                                            <li>{{$name}}：{{implode(' ', $values)}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="product-description">
+                                    {!! $product->description !!}
+                                </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="product-reviews-tab">
                                 <table class="table table-bordered table-striped">

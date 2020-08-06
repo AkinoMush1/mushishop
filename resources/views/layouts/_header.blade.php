@@ -24,7 +24,6 @@
                         </ul>
                     </li>
                 @endif
-
             </ul>
 
             <!-- Right Side Of Navbar -->

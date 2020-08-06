@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="69f2e3fd-5512-4211-bd12-b69cc5b1819a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/OrdersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/OrderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/_header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,6 +236,7 @@
       <command value="artisan make:migration products_add_category_id --table=products" />
       <command value="artisan make:seeder CategoriesSeeder" />
       <command value="artisan db:seed --class = Category.php" />
+      <command value="artisan make:model Models/ProductProperty -m" />
     </option>
   </component>
   <component name="RunManager">
@@ -275,7 +278,8 @@
       <workItem from="1596246190957" duration="25272000" />
       <workItem from="1596337033754" duration="15014000" />
       <workItem from="1596518377403" duration="29148000" />
-      <workItem from="1596600928952" duration="18932000" />
+      <workItem from="1596600928952" duration="20572000" />
+      <workItem from="1596688526350" duration="3451000" />
     </task>
     <servers />
   </component>
@@ -299,22 +303,22 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="92" y="92" width="1496" height="826" key="DiffContextDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1596017766952" />
-    <state width="1637" height="246" key="GridCell.Tab.0.bottom" timestamp="1596606650086">
+    <state width="1637" height="246" key="GridCell.Tab.0.bottom" timestamp="1596689248579">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1596606650086" />
-    <state width="1637" height="246" key="GridCell.Tab.0.center" timestamp="1596606650086">
+    <state width="1637" height="246" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1596689248579" />
+    <state width="1637" height="246" key="GridCell.Tab.0.center" timestamp="1596689248579">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1596606650086" />
-    <state width="1637" height="246" key="GridCell.Tab.0.left" timestamp="1596606650085">
+    <state width="1637" height="246" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1596689248579" />
+    <state width="1637" height="246" key="GridCell.Tab.0.left" timestamp="1596689248578">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1596606650085" />
-    <state width="1637" height="246" key="GridCell.Tab.0.right" timestamp="1596606650086">
+    <state width="1637" height="246" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1596689248578" />
+    <state width="1637" height="246" key="GridCell.Tab.0.right" timestamp="1596689248579">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1596606650086" />
+    <state width="1637" height="246" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1596689248579" />
     <state x="656" y="428" key="NewPhpFileDialog" timestamp="1596121710645">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -335,14 +339,14 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="531" y="198" width="596" height="532" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596617520816" />
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1596605618104">
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1596689240931">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596605618104" />
-    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1596613193014">
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596689240931" />
+    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1596691483874">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596613193014" />
+    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596691483874" />
   </component>
   <component name="masterDetails">
     <states>
