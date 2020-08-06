@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69f2e3fd-5512-4211-bd12-b69cc5b1819a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/CommonProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/CommonProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="69f2e3fd-5512-4211-bd12-b69cc5b1819a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -235,6 +230,7 @@
       <command value="artisan make:seeder CategoriesSeeder" />
       <command value="artisan db:seed --class = Category.php" />
       <command value="artisan make:model Models/ProductProperty -m" />
+      <command value="artisan make:seed DDRProductsSeeder" />
     </option>
   </component>
   <component name="RunManager">
@@ -277,7 +273,7 @@
       <workItem from="1596337033754" duration="15014000" />
       <workItem from="1596518377403" duration="29148000" />
       <workItem from="1596600928952" duration="20572000" />
-      <workItem from="1596688526350" duration="5026000" />
+      <workItem from="1596688526350" duration="5329000" />
     </task>
     <servers />
   </component>
@@ -301,22 +297,22 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="92" y="92" width="1496" height="826" key="DiffContextDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1596017766952" />
-    <state width="1637" height="246" key="GridCell.Tab.0.bottom" timestamp="1596689248579">
+    <state width="1637" height="246" key="GridCell.Tab.0.bottom" timestamp="1596693725499">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1596689248579" />
-    <state width="1637" height="246" key="GridCell.Tab.0.center" timestamp="1596689248579">
+    <state width="1637" height="246" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1596693725499" />
+    <state width="1637" height="246" key="GridCell.Tab.0.center" timestamp="1596693725498">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1596689248579" />
-    <state width="1637" height="246" key="GridCell.Tab.0.left" timestamp="1596689248578">
+    <state width="1637" height="246" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1596693725498" />
+    <state width="1637" height="246" key="GridCell.Tab.0.left" timestamp="1596693725498">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1596689248578" />
-    <state width="1637" height="246" key="GridCell.Tab.0.right" timestamp="1596689248579">
+    <state width="1637" height="246" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1596693725498" />
+    <state width="1637" height="246" key="GridCell.Tab.0.right" timestamp="1596693725498">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1596689248579" />
+    <state width="1637" height="246" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1596693725498" />
     <state x="656" y="428" key="NewPhpFileDialog" timestamp="1596121710645">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -337,10 +333,10 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="531" y="198" width="596" height="532" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596617520816" />
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1596689240931">
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1596693723190">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596689240931" />
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596693723190" />
     <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1596692719394">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
