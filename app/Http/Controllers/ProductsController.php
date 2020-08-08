@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use phpDocumentor\Reflection\DocBlock\Tags\Property;
 
 class ProductsController extends Controller
 {
@@ -78,6 +79,50 @@ class ProductsController extends Controller
             }
         }
 
+        // 只有当用户有输入搜索词或者使用了类目筛选的时候才会做聚合
+        if ($search || isset($category)) {
+            $params['body']['aggs'] = [
+                'properties' => [
+                    'nested' => [
+                        'path' => 'properties',
+                    ],
+                    'aggs'   => [
+                        'properties' => [
+                            'terms' => [
+                                'field' => 'properties.name',
+                            ],
+                            'aggs'  => [
+                                'value' => [
+                                    'terms' => [
+                                        'field' => 'properties.value',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ];
+        }
+
+        $propertyFilters = [];
+        if ($filterString = $request->input('filters')) {
+            $filterArray = explode('|', $filterString);
+            foreach ($filterArray as $filter) {
+                list($name, $value) = explode(':', $filter);
+                $params['body']['query']['bool']['filter'][] = [
+                    'nested' => [
+                        'path'  => 'properties',
+                        'query' => [
+                            ['term' => ['properties.name' => $name]],
+                            ['term' => ['properties.value' => $value]],
+                        ]
+                    ]
+                ];
+
+                $propertyFilters[$name] = $value;
+            }
+        }
+
         $result = app('es')->search($params);
 
         $productIds = collect($result['hits']['hits'])->pluck('_id')->toArray();
@@ -92,14 +137,30 @@ class ProductsController extends Controller
 
         $directories = Category::query()->where('level', 0)->get();
 
+        $properties = [];
+        if (isset($result['aggregations'])) {
+            $properties = collect($result['aggregations']['properties']['properties']['buckets'])
+                ->map(function ($bucket) {
+                    return [
+                        'key'    => $bucket['key'],
+                        'values' => collect($bucket['value']['buckets'])->pluck('key')->all(),
+                    ];
+                })
+                ->filter(function ($property) use ($propertyFilters) {
+                    return count($property['values']) > 1 && !isset($propertyFilters[$property['key']]);
+                });
+        }
+
         return view('products.index', [
-            'products'    => $pager,
-            'filters'     => [
+            'products'       => $pager,
+            'filters'        => [
                 'order'  => $order,
                 'search' => $search,
             ],
-            'category'    => $category ?? null,
-            'directories' => $directories,
+            'category'       => $category ?? null,
+            'directories'    => $directories,
+            'properties'     => $properties,
+            'propertyFilters' => $propertyFilters,
         ]);
     }
 

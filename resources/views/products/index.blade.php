@@ -8,6 +8,7 @@
                 <div class="card-body">
                     <!-- 筛选组件开始 -->
                     <form action="{{ route('products.index') }}" class="search-form">
+                        <input type="hidden" name="filters">
                         <div class="form-row">
                             <div class="col-md-9">
                                 <div class="form-row">
@@ -24,8 +25,17 @@
                                             <span class="category">{{ $category->name }}</span><span> ></span>
                                             <input type="hidden" name="category_id" value="{{ $category->id }}">
                                         @endif
+                                        @if($propertyFilters)
+                                            @foreach($propertyFilters as $name => $value)
+                                                <span class="filter">{{ $name }}:
+                                                <span class="filter-value">{{ $value }}</span>
+                                                    <!-- 调用之后定义的 removeFilterFromQuery -->
+                                                <a class="remove-filter"
+                                                   href="javascript: removeFilterFromQuery('{{ $name }}')">×</a>
+                                            </span>
+                                            @endforeach
+                                        @endif
                                     </div>
-                                    <!-- 面包屑结束 -->
                                     <div class="col-auto"><input type="text" class="form-control form-control-sm"
                                                                  name="search" placeholder="搜索"></div>
                                     <div class="col-auto">
@@ -73,6 +83,20 @@
                                 </div>
                             </div>
                         @endif
+
+                        @foreach($properties as $property)
+                            <div class="row">
+                                <!-- 输出属性名 -->
+                                <div class="col-3 filter-key">{{ $property['key'] }}：</div>
+                                <div class="col-9 filter-values">
+                                    <!-- 遍历属性值列表 -->
+                                    @foreach($property['values'] as $value)
+                                        <a href="#"
+                                           onclick="appendFilterToQuery('{{ $property['key'] }}', '{{ $value }}')">{{ $value }}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                     <!-- 展示子类目结束 -->
                     <div class="row products-list">
@@ -111,8 +135,68 @@
             $('.search-form select[name=order]').val(filters.order);
 
             $('.search-form select[name=order]').on('change', function () {
+                var searches = parseSearch();
+                // 如果有属性筛选
+                if (searches['filters']) {
+                    // 将属性筛选值放入隐藏字段中
+                    $('.search-form input[name=filters]').val(searches['filters']);
+                }
                 $('.search-form').submit();
+
             });
         })
+
+        function appendFilterToQuery(name, value) {
+            var searches = parseSearch();
+
+            if (searches['filters']) {
+                searches['filters'] += '|' + name + ':' + value;
+            } else {
+                searches['filters'] = name + ':' + value;
+            }
+
+            location.search = buildSearch(searches);
+        }
+
+        function parseSearch() {
+            var searches = {};
+            location.search.substr(1).split('&').forEach(function (str) {
+                var result = str.split('=');
+                searches[decodeURIComponent(result[0])] = decodeURIComponent(result[1]);
+            })
+
+            return searches;
+        }
+
+
+        // 根据 Key-Value 对象构建查询参数
+        function buildSearch(searches) {
+            var query = '?';
+            _.forEach(searches, function (value, key) {
+                query += encodeURIComponent(key) + '=' + encodeURIComponent(value) + '&';
+            });
+            return query.substr(0, query.length - 1);
+        }
+
+        function removeFilterFromQuery(name) {
+            var searches = parseSearch();
+
+            if (!searches['filters']) {
+                return;
+            }
+            var filters = [];
+            searches['filters'].split('|').forEach(function (filter) {
+                result = filter.split(':');
+                if (result[0] === name) {
+                    return;
+                }
+                filters.push(filter);
+            });
+
+            searches['filters'] = filters.join('|');
+
+            location.search = buildSearch(searches);
+        }
+
     </script>
 @endsection
