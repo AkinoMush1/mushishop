@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\OrderItem;
 use App\Models\Product;
 use App\SearchBuilders\ProductSearchBuilder;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use phpDocumentor\Reflection\DocBlock\Tags\Property;
@@ -62,8 +63,7 @@ class ProductsController extends Controller
 
         $productIds = collect($result['hits']['hits'])->pluck('_id')->toArray();
 
-        $products = Product::query()->where('on_sale', true)->whereIn('id', $productIds)
-            ->orderByRaw(sprintf("FIND_IN_SET(id, '%s')", join(',', $productIds)))->get();
+        $products = Product::query()->byIds($productIds)->get();
 
         $pager = new LengthAwarePaginator($products, $result['hits']['total']['value'], $perPage, $page, [
             // 点击换页的跳转页面
@@ -159,7 +159,7 @@ class ProductsController extends Controller
 //        ]);
 //    }
 
-    public function show(Product $product, Request $request)
+    public function show(Product $product, Request $request, ProductService $productService)
     {
         if (!$product->on_sale) {
             throw new InvalidRequestException('商品未上架');
@@ -181,7 +181,19 @@ class ProductsController extends Controller
             ->limit(10) // 取出 10 条
             ->get();
 
-        return view('products.show', ['product' => $product, 'favored' => $favored, 'reviews' => $reviews]);
+        $builder = (new ProductSearchBuilder())->onSale()->paginate(4, 1);
+
+
+        $similarProductIds = $productService->getSimilarProductIds($product, 4);
+
+        $similarProducts = Product::query()->byIds($similarProductIds)->get();
+
+        return view('products.show', [
+            'product' => $product,
+            'favored' => $favored,
+            'reviews' => $reviews,
+            'similar' => $similarProducts,
+        ]);
     }
 
     public function favor(Product $product, Request $request)
