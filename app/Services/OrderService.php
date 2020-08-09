@@ -66,6 +66,7 @@ class OrderService
                     throw new CouponCodeUnavailableException('该优惠券已被兑完');
                 }
             }
+
             $order->update(['total_amount' => $totalAmount]);
 
 // 将下单的商品从购物车中移除
