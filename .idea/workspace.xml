@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69f2e3fd-5512-4211-bd12-b69cc5b1819a" name="Default Changelist" comment="" />
+    <list default="true" id="69f2e3fd-5512-4211-bd12-b69cc5b1819a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -284,7 +288,7 @@
       <workItem from="1596852932585" duration="6211000" />
       <workItem from="1596865268109" duration="598000" />
       <workItem from="1596867132897" duration="20276000" />
-      <workItem from="1596952385293" duration="3233000" />
+      <workItem from="1596952385293" duration="5432000" />
     </task>
     <servers />
   </component>
@@ -344,18 +348,18 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="633" y="418" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1010@0.0.1680.1010" timestamp="1596339779081" />
-    <state x="531" y="198" width="625" height="532" key="find.popup" timestamp="1596897152354">
+    <state x="531" y="320" width="625" height="532" key="find.popup" timestamp="1596974219365">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="531" y="198" width="625" height="532" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596897152354" />
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1596875257022">
+    <state x="531" y="320" width="625" height="532" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596974219365" />
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1596974209317">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596875257022" />
-    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1596871011765">
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596974209317" />
+    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1596974177896">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596871011765" />
+    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596974177896" />
   </component>
   <component name="masterDetails">
     <states>
