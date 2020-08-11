@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="69f2e3fd-5512-4211-bd12-b69cc5b1819a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SeckillProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SeckillProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/OrderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,12 +195,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\Code\mushishop\public\uploads\images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Code\mushishop\resources\views\Pay" />
       <recent name="F:\Code\mushishop\app\Models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Code\mushishop\public\uploads\images" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -240,6 +247,7 @@
       <command value="artisan make:seed DDRProductsSeeder" />
       <command value="php artisan make:job SyncOneProductToES" />
       <command value="php artisan make:model Models/SeckillProduct -m" />
+      <command value="php artisan make:request SeckillOrderRequest" />
     </option>
   </component>
   <component name="RunManager">
@@ -289,7 +297,7 @@
       <workItem from="1596865268109" duration="598000" />
       <workItem from="1596867132897" duration="20276000" />
       <workItem from="1596952385293" duration="6682000" />
-      <workItem from="1597113453887" duration="2496000" />
+      <workItem from="1597113453887" duration="10083000" />
     </task>
     <servers />
   </component>
@@ -309,30 +317,30 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="380" y="47" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1596078802616" />
-    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596629676472">
+    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597121298000">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1596629676472" />
+    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1597121298000" />
     <state x="92" y="92" width="1496" height="826" key="DiffContextDialog" timestamp="1596017766952">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="92" y="92" width="1496" height="826" key="DiffContextDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1596017766952" />
-    <state width="1637" height="246" key="GridCell.Tab.0.bottom" timestamp="1597113850024">
+    <state width="1637" height="246" key="GridCell.Tab.0.bottom" timestamp="1597120774178">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1597113850024" />
-    <state width="1637" height="246" key="GridCell.Tab.0.center" timestamp="1597113850023">
+    <state width="1637" height="246" key="GridCell.Tab.0.bottom/0.0.1680.1010@0.0.1680.1010" timestamp="1597120774178" />
+    <state width="1637" height="246" key="GridCell.Tab.0.center" timestamp="1597120774177">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1597113850023" />
-    <state width="1637" height="246" key="GridCell.Tab.0.left" timestamp="1597113850023">
+    <state width="1637" height="246" key="GridCell.Tab.0.center/0.0.1680.1010@0.0.1680.1010" timestamp="1597120774177" />
+    <state width="1637" height="246" key="GridCell.Tab.0.left" timestamp="1597120774177">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1597113850023" />
-    <state width="1637" height="246" key="GridCell.Tab.0.right" timestamp="1597113850023">
+    <state width="1637" height="246" key="GridCell.Tab.0.left/0.0.1680.1010@0.0.1680.1010" timestamp="1597120774177" />
+    <state width="1637" height="246" key="GridCell.Tab.0.right" timestamp="1597120774178">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="246" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1597113850023" />
+    <state width="1637" height="246" key="GridCell.Tab.0.right/0.0.1680.1010@0.0.1680.1010" timestamp="1597120774178" />
     <state x="656" y="428" key="NewPhpFileDialog" timestamp="1596121710645">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -353,14 +361,14 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="531" y="320" width="625" height="532" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596974219365" />
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1597113840129">
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1597121060065">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1597113840129" />
-    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1597114562879">
+    <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1597121060065" />
+    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1597127620441">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1597114562879" />
+    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1597127620441" />
   </component>
   <component name="masterDetails">
     <states>

@@ -105,6 +105,6 @@ class Product extends Model
 
     public function seckill()
     {
-        return $this->hasMany(SeckillProduct::class);
+        return $this->hasOne(SeckillProduct::class);
     }
 }

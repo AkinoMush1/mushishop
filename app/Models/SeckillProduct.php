@@ -25,6 +25,6 @@ class SeckillProduct extends Model
 
     public function getIsAfterEndAttribute()
     {
-        return Carbon::now()->gt($this->start_at);
+        return Carbon::now()->gt($this->end_at);
     }
 }
