@@ -14,7 +14,7 @@ Route::redirect('/', '/products')->name('root');
 Auth::routes(['verify' => true]);
 
 // 秒杀
-Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.store');
+Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.store')->middleware('random_drop:80');
 
 // 商品列表
 Route::get('products', 'ProductsController@index')->name('products.index');
