@@ -14,6 +14,7 @@ use App\Models\UserAddress;
 use Carbon\Carbon;
 use http\Exception\InvalidArgumentException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
 
 class OrderService
 {
@@ -171,21 +172,19 @@ class OrderService
         }
     }
 
-    public function seckill(User $user, UserAddress $address, ProductSku $sku)
+    public function seckill(User $user, array $addressData, ProductSku $sku)
     {
-        $order = DB::transaction(function () use ($user, $address, $sku) {
-            $address->update(['last_used_at' => Carbon::now()]);
-
+        $order = DB::transaction(function () use ($user, $addressData, $sku) {
             if ($sku->decreaseStock(1) <= 0) {
                 throw new InvalidRequestException('该商品库存不足');
             }
 
             $order = new Order([
                 'address'      => [
-                    'address'       => $address->full_address,
-                    'zip'           => $address->zip,
-                    'contact_name'  => $address->contact_name,
-                    'contact_phone' => $address->contact_phone,
+                    'address'       => $addressData['province'] . $addressData['city'] . $addressData['district'] . $addressData['address'],
+                    'zip'           => $addressData['zip'],
+                    'contact_name'  => $addressData['contact_name'],
+                    'contact_phone' => $addressData['contact_phone'],
                 ],
                 'remark'       => '',
                 'total_amount' => $sku->price,
@@ -203,6 +202,8 @@ class OrderService
             $item->product()->associate($sku->product_id);
             $item->productSku()->associate($sku);
             $item->save();
+
+            Redis::decr('seckill_sku_' . $sku->id);
 
             return $order;
         });

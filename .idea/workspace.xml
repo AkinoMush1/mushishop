@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="69f2e3fd-5512-4211-bd12-b69cc5b1819a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/SeckillProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/SeckillProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/SeckillOrderRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/SeckillOrderRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/OrderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,6 +297,7 @@
       <workItem from="1596952385293" duration="6682000" />
       <workItem from="1597113453887" duration="16096000" />
       <workItem from="1597207607737" duration="607000" />
+      <workItem from="1597209576834" duration="2769000" />
     </task>
     <servers />
   </component>
@@ -350,18 +357,18 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="633" y="418" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1010@0.0.1680.1010" timestamp="1596339779081" />
-    <state x="531" y="320" width="625" height="532" key="find.popup" timestamp="1596974219365">
+    <state x="531" y="320" width="625" height="532" key="find.popup" timestamp="1597209610096">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="531" y="320" width="625" height="532" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1596974219365" />
+    <state x="531" y="320" width="625" height="532" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1597209610096" />
     <state x="549" y="499" width="672" height="677" key="run.anything.popup" timestamp="1597166525647">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="549" y="499" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1597166525647" />
-    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1597168043501">
+    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup" timestamp="1597213807794">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1597168043501" />
+    <state x="661" y="278" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1597213807794" />
   </component>
   <component name="masterDetails">
     <states>

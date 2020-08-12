@@ -13,6 +13,9 @@
 Route::redirect('/', '/products')->name('root');
 Auth::routes(['verify' => true]);
 
+// 秒杀
+Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.store');
+
 // 商品列表
 Route::get('products', 'ProductsController@index')->name('products.index');
 
@@ -44,8 +47,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('crowdfunding_orders', 'OrdersController@crowdfunding')->name('crowdfunding_orders.store');
     // 优惠券s
     Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show');
-    // 秒杀
-    Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.store');
 
     // 支付宝
     Route::get('payment/{order}/alipay', 'PaymentController@payByAlipay')->name('payment.alipay');
