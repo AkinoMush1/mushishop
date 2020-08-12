@@ -40,7 +40,7 @@ class SeckillProductsController extends CommonProductsController
             // 获取当前时间与秒杀结束时间的差值
             $diff = $product->seckill->end_at->getTimestamp() - time();
             // 遍历商品 SKU
-            $product->skus->each(function (ProductSku $sku) use ($diff, $product) {
+            $product->skus->each(function ($sku) use ($diff, $product) {
                 // 如果秒杀商品是上架并且尚未到结束时间
                 if ($product->on_sale && $diff > 0) {
                     // 将剩余库存写入到 Redis 中，并设置该值过期时间为秒杀截止时间
